@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
-import { ToolbarComponent } from './homepage/toolbar/toolbar.component';
+import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -16,9 +16,18 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  constructor(private router: Router) {
+  public isLoggedComponent: boolean = false;
 
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        let href = this.router.url;
+        this.isLoggedComponent = href.startsWith("/app");
+      }
+    });
   }
 }

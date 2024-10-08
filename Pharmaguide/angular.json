@@ -30,6 +30,7 @@
             ],
             "styles": [
               "src/styles.scss",
+              "node_modules/material-design-icons-iconfont/dist/material-design-icons.css",
               "@angular/material/prebuilt-themes/azure-blue.css"
             ],
             "scripts": [],

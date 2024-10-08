@@ -1,0 +1,64 @@
+<main>
+  <div class="main">
+    <mat-toolbar class="toolbar">
+        <div class="left">
+          @if (isLogged) {
+            <button mat-button (click)="sidenav.toggle()">sidenav</button>
+          }
+          <button 
+            mat-icon-button
+            routerLink="/">
+            <img 
+              src="../../../app/assets/img/logo.jpg" 
+              class="logo"/>
+          </button>
+          <img 
+            mat-icon-button 
+            src="../../../app/assets/img/textlogo.png" 
+            routerLink="/" 
+            class="textlogo" />
+        </div>
+        <div class="right">
+          @if (isLogged) {
+            <a 
+              mat-button 
+              type="button" 
+              class="register" 
+              routerLink="/">
+              <div class="">Se déconnecter</div>
+            </a>
+          }
+          @else if (this.innerWidth > 1050) {
+            <a 
+              mat-button 
+              type="button" 
+              class="register" 
+              routerLink="/register">
+              <div class="registerFont">Vous êtes pharmacien?</div>
+            </a>
+            <a 
+              mat-raised-button 
+              type="button" 
+              class="/login" 
+              routerLink="login">
+              <div class="loginFont">Se connecter</div>
+            </a>
+          }
+          
+        </div>
+    </mat-toolbar>
+  </div>
+</main>
+@if (isLogged) {
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav>
+      <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="side-nav-content">
+      <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+}
+<router-outlet></router-outlet>

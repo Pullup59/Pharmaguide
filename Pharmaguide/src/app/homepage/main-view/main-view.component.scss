@@ -5,13 +5,15 @@ app-main-view {
     .container {
         display: flex;
         flex-direction: column;
-        margin-top: 3%;
+        min-height: 1024px ;
+        margin-top: 1%;
         margin-right: 8%;
         margin-left: 8%;
         
         .top-container {
             flex: 1 1 auto;
             display: flex;
+            max-height: 500px;
             justify-content: center;
             align-items: center;
             margin-bottom: 5%;
@@ -57,13 +59,55 @@ app-main-view {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 8%;
+        max-height: 180px;
 
         .confidential-info-box {
-            background-color: $smoothgreen;
+            display: flex;
+            flex-direction: row;
+            background-color: $lightgreen;
             height:236px;
             width:1021px;
             border-radius:10px;
+
+            .protected-icon {
+                margin-right: 10%;
+                min-height:200px;
+                min-width:200px;
+            }
+
+            .bot-text-container {
+                display: flex;
+                flex-direction: column;
+
+                .text3 {
+                    display: flex;
+                    margin-top: 8%;
+                }
+    
+                .text1 {
+                    display: flex;
+                    margin-top: 1%;
+                    margin-bottom: 2%;
+                    max-width: 631px;
+                    text-align: left;
+                }
+    
+                .more-button {
+                    background-color: $green;
+                    display: flex;
+                    margin-top: 2%;
+                    margin-left: 1%;
+                    height: 40px;
+                    max-width:315px;
+                    min-width:260px;
+                    border-radius:5px;
+    
+                    .more-button-font {
+                        color: white;
+                        font-size: 20px;
+                    }
+                }
+            }
         }
     }
 
