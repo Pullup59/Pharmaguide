@@ -1,11 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-main-view',
   standalone: true,
   imports: [
-    FormsModule
+    CommonModule,
+    MatIconModule,
   ],
   templateUrl: './main-view.component.html',
   styleUrl: './main-view.component.scss',

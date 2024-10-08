@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { ToolbarComponent } from './homepage/toolbar/toolbar.component';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,8 @@ import { CommonModule } from '@angular/common';
   imports: [
     RouterOutlet,
     ToolbarComponent,
-    CommonModule
+    CommonModule,
+    MatIconModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
