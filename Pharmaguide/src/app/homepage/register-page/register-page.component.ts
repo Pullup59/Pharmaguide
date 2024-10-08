@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainSharedService } from '../../shared/service/main-shared.service';
 
 @Component({
   selector: 'app-register-page',
@@ -8,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './register-page.component.scss'
 })
 export class RegisterPageComponent  implements OnInit {
+  
 
-  constructor() { }
+  constructor(public mainSharedService: MainSharedService) { }
 
   ngOnInit() {
+    this.mainSharedService.disable();
   }
 
 }

@@ -1,8 +1,9 @@
-import { Component, HostListener, Input, OnDestroy, signal, ViewChild, ViewEncapsulation, WritableSignal } from '@angular/core';
+import { Component, effect, HostListener, Input, OnDestroy, OnInit, signal, ViewChild, ViewEncapsulation, WritableSignal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatIconModule} from '@angular/material/icon';
-import { Router, RouterOutlet, RouterModule } from '@angular/router';
+import { RouterOutlet, RouterModule } from '@angular/router';
+
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MainSharedService } from '../service/main-shared.service';
 import { Subscription } from 'rxjs';
@@ -22,7 +23,15 @@ import { Subscription } from 'rxjs';
   styleUrl: './toolbar.component.scss',
   encapsulation: ViewEncapsulation.None
 })
-export class ToolbarComponent implements OnDestroy {
+export class ToolbarComponent implements OnInit, OnDestroy {
+
+  innerWidth: number = 1051;
+
+  loginFlag: boolean = false;
+
+  subscription: Subscription[]= [];
+
+  public sidenavFlag: boolean = false;
     
   @ViewChild(MatSidenav)sidenav!: MatSidenav;
 
@@ -30,20 +39,14 @@ export class ToolbarComponent implements OnDestroy {
     onResize(event: any) {
       this.innerWidth = window.innerWidth;
     }
-
-  isLoggedd: boolean = false;
-
-  innerWidth: number = 1051;
-
-  private subscription: Subscription[]= [];
-
-  isLogged = signal<boolean>(false);
   
-  constructor(private router: Router, private shareFlagsService: MainSharedService) {
+  constructor(private shareFlagsService: MainSharedService) {
+    effect(()=> {
+      this.loginFlag = this.shareFlagsService.getSidenavFlag();
+    });
   }
 
-  ngOnint() {
-    this.isLogged = signal(this.shareFlagsService.getTodos() === "true");
+  ngOnInit() {
   }
 
   ngOnDestroy(): void {

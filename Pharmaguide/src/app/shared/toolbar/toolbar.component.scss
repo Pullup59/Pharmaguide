@@ -10,8 +10,10 @@ app-toolbar {
         flex-direction: row;
 
         .left {
+            display: flex;
             width:70%;
             justify-content: flex-start;
+            flex-direction: row;
         }
 
         .right {
@@ -30,19 +32,29 @@ app-toolbar {
         justify-content: center;
         align-items: center;
         border-radius:45px;
+        height:90px !important;
+        width:89px !important;
     }
 
-    .mat-mdc-icon-button img {
+    .button1 {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
         height:90px !important;
         width:89px !important;
     }
 
     .textlogo {
-        height:81px;
-        width:390px;
-        left:126px;
-        top:17px;
-        position:absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height:95px !important;
+        width:390px !important;
+    }
+
+    .button2 {
+        height:95px !important;
+        width:390px !important;
     }
 
     .mdc-button {

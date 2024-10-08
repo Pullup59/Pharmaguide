@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MainSharedService } from '../../shared/service/main-shared.service';
 
 @Component({
   selector: 'app-main-view',
@@ -17,9 +18,9 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class MainViewComponent implements OnInit {
 
-  constructor() { }
+  constructor( public mainSharedService: MainSharedService) { }
 
   ngOnInit() {
+    this.mainSharedService.disable();
   }
-
 }

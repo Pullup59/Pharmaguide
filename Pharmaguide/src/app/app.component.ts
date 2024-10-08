@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { MainSharedService } from './shared/service/main-shared.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -18,16 +20,15 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class AppComponent implements OnInit {
 
-  public isLoggedComponent: boolean = false;
+  $subscribtions: Subscription[] = [];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private shareFlagsService: MainSharedService) {}
 
   ngOnInit() {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        let href = this.router.url;
-        this.isLoggedComponent = href.startsWith("/app");
-      }
-    });
+    this.$subscribtions.push();
+  }
+
+  ngOnDestroy() {
+    this.$subscribtions.forEach(sub => sub.unsubscribe());
   }
 }

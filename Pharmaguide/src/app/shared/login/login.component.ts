@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterOutlet, RouterModule } from '@angular/router';
+import { MainSharedService } from '../service/main-shared.service';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +14,18 @@ import { Router, RouterOutlet, RouterModule } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) {
+  loginFlag: boolean = false;
 
+  constructor(private router: Router, public mainSharedService: MainSharedService) {
+
+  }
+
+  ngOnInit() {
+  }
+
+  login() {
+    this.mainSharedService.enable();
   }
 }

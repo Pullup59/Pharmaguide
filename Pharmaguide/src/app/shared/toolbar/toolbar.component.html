@@ -2,28 +2,26 @@
   <div class="main">
     <mat-toolbar class="toolbar">
         <div class="left">
-          @if (isLogged.asReadonly()) {
-            <button mat-icon-button (click)="sidenav.toggle()">
-              <mat-icon>3d_rotation</mat-icon>
-            </button>
-          }
           <button 
             mat-icon-button
-            routerLink="/">
+            routerLink="/"
+            class="button1">
             <img 
               src="../../../app/assets/img/logo.jpg" 
               class="logo"/>
           </button>
+          <button 
+            mat-icon-button
+            routerLink="/"
+            class="button2">
           <img 
-            mat-icon-button 
-            src="../../../app/assets/img/textlogo.png" 
-            routerLink="/" 
+            src="../../../app/assets/img/textlogo.png"
             class="textlogo" />
+          </button>
         </div>
         <div class="right">
-          @if (isLogged.asReadonly()) {
+          @if (loginFlag) {
             <a 
-              mat-button 
               type="button" 
               class="register" 
               routerLink="/">
@@ -51,16 +49,17 @@
     </mat-toolbar>
   </div>
 </main>
-@if (isLogged.asReadonly()) {
-  <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav>
+    @if (loginFlag) {
       <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
-    </mat-sidenav>
+    }
+  </mat-sidenav>
 
-    <mat-sidenav-content class="side-nav-content">
+  <mat-sidenav-content class="side-nav-content">
+    @if (loginFlag) {
       <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-}
-<router-outlet></router-outlet>
+    }
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
