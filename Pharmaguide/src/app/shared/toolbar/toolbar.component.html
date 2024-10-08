@@ -2,7 +2,7 @@
   <div class="main">
     <mat-toolbar class="toolbar">
         <div class="left">
-          @if (isLogged) {
+          @if (isLogged.asReadonly()) {
             <button mat-icon-button (click)="sidenav.toggle()">
               <mat-icon>3d_rotation</mat-icon>
             </button>
@@ -21,7 +21,7 @@
             class="textlogo" />
         </div>
         <div class="right">
-          @if (isLogged) {
+          @if (isLogged.asReadonly()) {
             <a 
               mat-button 
               type="button" 
@@ -51,7 +51,7 @@
     </mat-toolbar>
   </div>
 </main>
-@if (isLogged) {
+@if (isLogged.asReadonly()) {
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav>
       <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
