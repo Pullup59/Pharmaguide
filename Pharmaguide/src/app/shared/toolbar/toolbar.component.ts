@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, Input, OnDestroy, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatIconModule} from '@angular/material/icon';
@@ -20,8 +20,8 @@ import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
   styleUrl: './toolbar.component.scss',
   encapsulation: ViewEncapsulation.None
 })
-export class ToolbarComponent {
-  
+export class ToolbarComponent implements OnDestroy {
+    
   @ViewChild(MatSidenav)sidenav!: MatSidenav;
 
   @Input() isLogged: boolean = false;
@@ -36,5 +36,8 @@ export class ToolbarComponent {
   constructor(private router: Router) {
 
   }
-  
+  ngOnDestroy(): void {
+    this.isLogged = false;
+  }
+
 }

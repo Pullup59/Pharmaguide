@@ -3,7 +3,9 @@
     <mat-toolbar class="toolbar">
         <div class="left">
           @if (isLogged) {
-            <button mat-button (click)="sidenav.toggle()">sidenav</button>
+            <button mat-icon-button (click)="sidenav.toggle()">
+              <mat-icon>3d_rotation</mat-icon>
+            </button>
           }
           <button 
             mat-icon-button
