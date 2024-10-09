@@ -5,16 +5,6 @@ app-dashboard {
         justify-content: center;
         flex-direction: row;
         min-height: 662px;
-
-        .action-container {
-            justify-content: center;
-            align-items: center;
-
-            .action-button {
-                min-width: 200px;
-                min-height: 200px;
-            }
-        }
     }
 }
  
