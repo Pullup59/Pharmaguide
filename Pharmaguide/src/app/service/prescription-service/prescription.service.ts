@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
-import { HttpClient } from '@angular/common/http';
-import { Product } from '../../model/product/product.model';
+import { Prescription } from '../../model/prescription/prescription.model';
 import { catchError, Observable, throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductServiceService {
-  url = environment.apiUrl + 'Products';
+export class PrescriptionService {
+
+  url = environment.apiUrl + 'prescriptions';
 
   constructor(private http: HttpClient) { }
 
-  getAllProducts() : Observable<Product[]> {
-
-    return this.http.get<Product[]>(this.url)
+  getById(id: number) : Observable<Prescription> {
+    return this.http.get<Prescription>(this.url)
       .pipe(
         catchError(this.handleError)
       );
