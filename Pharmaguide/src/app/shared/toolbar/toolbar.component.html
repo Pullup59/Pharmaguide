@@ -20,12 +20,13 @@
           </button>
         </div>
         <div class="right">
-          @if (loginFlag) {
+          @if (loginFlag && this.innerWidth > 1050) {
             <a 
+              mat-button
               type="button" 
-              class="register" 
+              class="register"
               routerLink="/">
-              <div class="">Se déconnecter</div>
+              <div class="registerFont">Se déconnecter</div>
             </a>
           }
           @else if (this.innerWidth > 1050) {
@@ -49,16 +50,57 @@
     </mat-toolbar>
   </div>
 </main>
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav>
-    @if (loginFlag) {
-      <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
-    }
+<mat-sidenav-container autosize class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" class="sidenav-style">
+    <div class="sidenav-button-container">
+
+        <button class="route-button" mat-button>
+          <div class="text1" [ngStyle]="{'margin-left': '13px'}">
+            <img src="../../../app/assets/icons/dashboard-icon.png"/>
+            Tableau de bord
+          </div>
+        </button>
+
+        <button class="route-button" mat-button>
+          
+          <div class="text1" [ngStyle]="{'margin-left': '9px'}">
+            <img src="../../../app/assets/icons/consult-icon.png" 
+              class=""/>
+              Consultation produits
+          </div>
+        </button>
+
+        <button class="route-button" mat-button>
+          <div class="text1" [ngStyle]="{'margin-left': '10px'}">
+            <img src="../../../app/assets/icons/product-edit-icon.png" 
+              class=""/>
+            Edition produits
+          </div>
+        </button>
+
+        <button class="route-button" mat-button>
+          <div class="text1" [ngStyle]="{'margin-left': '10px'}">
+            <img src="../../../app/assets/icons/specific-icon.png" 
+              class=""/>
+            Conseils spécifique
+          </div>
+        </button>
+
+    </div>
   </mat-sidenav>
 
   <mat-sidenav-content class="side-nav-content">
     @if (loginFlag) {
-      <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+      <button class="corner-button" mat-button (click)="toggleSidenav()">
+        @if (buttonSidenavFlag) {
+          <img src="../../../app/assets/icons/arrow.png" 
+              class="tranform-right"/>
+        }
+        @else {
+          <img src="../../../app/assets/icons/arrow.png" 
+              class="tranform-left"/>
+        }
+      </button>
     }
     <router-outlet></router-outlet>
   </mat-sidenav-content>
