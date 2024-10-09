@@ -4,6 +4,7 @@ import { RegisterPageComponent } from './homepage/register-page/register-page.co
 import { LoginComponent } from './shared/login/login.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { ConsultPageComponent } from './admin/consult-page/consult-page.component';
+import { PrescriptionPageComponent } from './admin/prescription-page/prescription-page.component';
 
 export const routes: Routes = [
   { 
@@ -30,5 +31,9 @@ export const routes: Routes = [
   { 
     path: 'app/consult', 
     component: ConsultPageComponent
+  },
+  { 
+    path: 'app/prescription', 
+    component: PrescriptionPageComponent
   }
 ];

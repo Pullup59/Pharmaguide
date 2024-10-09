@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@ang
 import { ProductService } from '../../service/product-service/product.service';
 import { Subscription } from 'rxjs';
 import { Product } from '../../model/product/product.model';
-import { PrescriptionService } from '../../service/prescription-service/prescription.service';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatCommonModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -38,7 +37,7 @@ export class ConsultPageComponent implements OnInit, OnDestroy {
 
   sort!: MatSort;
 
-  constructor( public productService : ProductService, public adviceService : PrescriptionService) {}
+  constructor( public productService : ProductService) {}
 
   ngOnInit(): void {
     this.subscriptions.push(
@@ -53,34 +52,23 @@ export class ConsultPageComponent implements OnInit, OnDestroy {
     );
   }
 
-@ViewChild(MatSort) set matSort(ms: MatSort) {
-    this.sort = ms;
-    this.setDataSourceAttributes();
-}
-
-@ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
-    this.paginator = mp;
-    this.setDataSourceAttributes();
-}
-
-setDataSourceAttributes() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-
-    // if (this.paginator && this.sort) {
-    //     this.applyFilter('');
-    // }
-}
-
-  initPaginator() {
-    this.isLoading = true
-    console.log(this.paginator);
-    this.dataSource.paginator = this.paginator;
+  @ViewChild(MatSort) set matSort(ms: MatSort) {
+      this.sort = ms;
+      this.setDataSourceAttributes();
   }
 
-  ngAfterViewInit() {
-    // this.isLoading = true
-    // this.dataSource.paginator = this.paginator;
+  @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
+      this.paginator = mp;
+      this.setDataSourceAttributes();
+  }
+
+  setDataSourceAttributes() {
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+
+      // if (this.paginator && this.sort) {
+      //     this.applyFilter('');
+      // }
   }
 
   ngOnDestroy(): void {
