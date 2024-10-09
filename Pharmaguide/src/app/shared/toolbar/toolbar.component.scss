@@ -144,4 +144,68 @@ app-toolbar {
         font-size:20px;
         font-weight: 700;
     }
+
+    footer {
+        display: flex;
+        flex-direction: column;
+        background-color: #1B9476;
+        border-top-right-radius: 25px;
+        padding: 18px 36px;
+        color: white;
+    }
+    
+    .footer-header {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 16px;
+        align-items: center;
+        font-size: 0.8em;
+    }
+
+    .footer-header-textlogo{
+        height: 32px;
+        padding-left: 6px;
+        padding-right: 22px;
+    }
+
+    .footer-body {
+        display: flex;
+        gap: 140px;
+        padding-bottom: 16px;
+    }
+
+    .footer-body-column {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer-body-column-title {
+        font-size: 1.4em;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 16px;
+    }
+
+    // .footer-body-column-title::after {
+    //     content: "";
+    //     width: 200px;
+    //     border: solid 1px white;
+    //     background-color: white;
+    // }
+
+    .footer-body-column-content {
+        display: flex;
+        flex-direction: column;
+        margin-left: 8px;
+    }
+    
+    .footer-body-column-content-element {
+        padding-bottom: 6px;
+        display: flex;
+    }
+
+    .footer-body-column-content-element a{
+        color: white;
+        text-decoration: none;
+    }
 }
