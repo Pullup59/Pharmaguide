@@ -11,7 +11,6 @@ export class MainSharedService {
     this.sidenavFlag.apply(false);
   }
 
-  // Méthode pour obtenir tous les todos (Signal accessible pour la vue)
   getSidenavFlag(): boolean {
     return this.sidenavFlag();
   }

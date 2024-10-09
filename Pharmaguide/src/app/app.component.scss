@@ -3,3 +3,9 @@
 main {
     background: $tan !important;
 }
+
+body {
+    position:absolute !important;
+    height: 100%;
+    overflow: hidden;
+}

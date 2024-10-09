@@ -14,7 +14,15 @@ export class PrescriptionService {
   constructor(private http: HttpClient) { }
 
   getById(id: number) : Observable<Prescription> {
-    return this.http.get<Prescription>(this.url)
+    const getIdUrl = `${this.url}/${id}`;
+    return this.http.get<Prescription>(getIdUrl)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  getAll() : Observable<Prescription[]> {
+    return this.http.get<Prescription[]>(this.url)
       .pipe(
         catchError(this.handleError)
       );

@@ -1,9 +1,8 @@
-import { Component, effect, HostListener, Input, OnDestroy, OnInit, signal, ViewChild, ViewEncapsulation, WritableSignal } from '@angular/core';
+import { Component, effect, HostListener, OnDestroy, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatIconModule} from '@angular/material/icon';
 import { RouterOutlet, RouterModule, Router, NavigationEnd } from '@angular/router';
-
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MainSharedService } from '../service/main-shared.service';
 import { Subscription } from 'rxjs';
@@ -25,7 +24,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './toolbar.component.scss',
   encapsulation: ViewEncapsulation.None
 })
-export class ToolbarComponent implements OnInit, OnDestroy {
+export class ToolbarComponent implements OnDestroy {
 
   innerWidth: number = 1051;
 
@@ -44,20 +43,16 @@ export class ToolbarComponent implements OnInit, OnDestroy {
       this.innerWidth = window.innerWidth;
     }
 
-  constructor( private router: Router ,private shareFlagsService: MainSharedService) {
+  constructor(private router: Router ,private shareFlagsService: MainSharedService) {
     effect(()=> {
       this.loginFlag = this.shareFlagsService.getSidenavFlag();
+      if (this.loginFlag) this.sidenav.open;
     });
     this.$subscription.push(
       router.events.subscribe((val) => {
-        if (val instanceof NavigationEnd) {
-          this.closeSidenav();
-        }
+        val instanceof NavigationEnd && !val.url.startsWith("/app") ? this.closeSidenav() : this.openSidenav();
       }
     ));
-  }
-
-  ngOnInit() {
   }
 
   ngOnDestroy(): void {
@@ -71,6 +66,10 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
   closeSidenav() {
     this.sidenav.close();
+  }
+
+  openSidenav() {
+    this.sidenav.open();
   }
 
 }

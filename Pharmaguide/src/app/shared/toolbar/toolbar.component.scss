@@ -2,6 +2,7 @@
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 
 app-toolbar {
+    height: 100%;
 
     .toolbar {
         max-height: 107px;
@@ -27,7 +28,7 @@ app-toolbar {
     .sidenav-button-container {
         display: flex;
         flex-direction: column;
-            
+
         .mat-mdc-button:hover {
             background-color:$tan;
             height:47px;
@@ -37,9 +38,8 @@ app-toolbar {
             
         .route-button {
             display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            flex-direction: row;
+            align-items: flex-start;
+            flex-direction: column;
             margin-top: 10%;
         }
     }
@@ -136,12 +136,27 @@ app-toolbar {
 
     .tranform-right {
         transform: scaleX(1);
-
     }
 
     .text1 {
         color: $bluenavy;
         font-size:20px;
         font-weight: 700;
+    }
+
+    .logged-footer {
+        display: flex;
+        height: 56px;
+        background-color: $green;
+    }
+
+    .icon-container {
+        width: 42px;
+        height: 42px;
+    }
+
+    .button-icon-container {
+        display: flex;
+        flex-direction: row;
     }
 }

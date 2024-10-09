@@ -53,49 +53,67 @@
 <mat-sidenav-container autosize class="sidenav-container">
   <mat-sidenav #sidenav mode="side" class="sidenav-style">
     <div class="sidenav-button-container">
+
       <button 
         class="route-button" 
         mat-button 
         routerLink="/app/dashboard">
-        <div class="text1" [ngStyle]="{'margin-left': '13px'}">
-          <img src="../../../app/assets/icons/dashboard-icon.png"/>
-          Tableau de bord
+        <div class="button-icon-container">
+          <div class="icon-container">
+            <img src="../../../app/assets/icons/dashboard-icon.png"
+              [ngStyle]="{'margin-right': '6px'}"/>
+          </div>
+          <div class="text1">
+            Tableau de bord
+          </div>
         </div>
       </button>
+
       <button 
         class="route-button" 
         mat-button 
         routerLink="/app/consult">
-        <div class="text1" [ngStyle]="{'margin-left': '9px'}">
-          <img src="../../../app/assets/icons/consult-icon.png" 
-            class=""/>
+        <div class="button-icon-container">
+          <div class="icon-container">
+            <img src="../../../app/assets/icons/med.png"
+              [ngStyle]="{'margin-right': '6px'}"/>
+          </div>
+          <div class="text1">
             Consultation produits
+          </div>
         </div>
       </button>
-      <button class="route-button" mat-button>
-        <div class="text1" [ngStyle]="{'margin-left': '10px'}">
-          <img src="../../../app/assets/icons/product-edit-icon.png" 
-            class=""/>
-          Edition produits
-        </div>
-      </button>
-      <button class="route-button" mat-button>
-        <div class="text1" [ngStyle]="{'margin-left': '10px'}">
-          <img src="../../../app/assets/icons/specific-icon.png" 
-            class=""/>
-          Conseils spécifique
-        </div>
-      </button>
+
       <button 
-          class="route-button" 
-          mat-button
-          routerLink="/app/prescription">
-        <div class="text1" [ngStyle]="{'margin-left': '10px'}">
-          <img src="../../../app/assets/icons/specific-icon.png" 
-            class=""/>
-          Prescriptions
+        class="route-button" 
+        mat-button 
+        routerLink="/app/consult">
+        <div class="button-icon-container">
+          <div class="icon-container">
+            <img src="../../../app/assets/icons/nest-advice.png"
+              [ngStyle]="{'margin-right': '6px'}"/>
+          </div>
+          <div class="text1">
+            Conseils spécifiques
+          </div>
         </div>
       </button>
+
+      <button 
+        class="route-button" 
+        mat-button 
+        routerLink="/app/prescription">
+        <div class="button-icon-container">
+          <div class="icon-container">
+            <img src="../../../app/assets/icons/consult-icon.png" 
+              [ngStyle]="{'margin-right': '6px'}"/>
+          </div>
+          <div class="text1">
+            Prescriptions
+          </div>
+        </div>
+      </button>
+
     </div>
   </mat-sidenav>
   <mat-sidenav-content class="side-nav-content">
@@ -103,14 +121,23 @@
       <button class="corner-button" mat-button (click)="toggleSidenav()">
         @if (buttonSidenavFlag) {
           <img src="../../../app/assets/icons/arrow.png" 
-              class="tranform-right"/>
+              class="tranform-left"/>
         }
         @else {
           <img src="../../../app/assets/icons/arrow.png" 
-              class="tranform-left"/>
+              class="tranform-right"/>
         }
       </button>
     }
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+@if (loginFlag) {
+  <footer class="logged-footer">
+  </footer>
+}
+@else {
+
+}
+
