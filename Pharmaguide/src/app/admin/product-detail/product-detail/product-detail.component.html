@@ -1,0 +1,22 @@
+<div class="container">
+    @if (adviceData !== null && adviceData.length !== 0) {
+        <ng-container>
+            <div class="products">
+                <ng-container *ngFor="let advice of adviceData">
+                    <div class="advices">
+                        <ng-container *ngFor="let advice of adviceData">
+                            <div class="advice">
+                                <div>- {{ advice.content }}</div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </ng-container>
+            </div>
+        </ng-container>
+    }
+    @else {
+        <ng-container>
+            <p class="text-margin">Aucun conseil n'est définie pour ce médicament</p>
+        </ng-container>
+    }
+</div>

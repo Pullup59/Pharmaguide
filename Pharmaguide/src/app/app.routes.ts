@@ -8,6 +8,7 @@ import { PrescriptionPageComponent } from './admin/prescription-page/prescriptio
 import { authGuard } from './shared/guards/auth-guard-off/auth.guard';
 import { authEnableGuard } from './shared/guards/auth-guard-on/auth-enable.guard';
 import { ValidatePrescriptionPageComponent } from './admin/validate-prescription-page/validate-prescription-page.component';
+import { ProductDetailComponent } from './admin/product-detail/product-detail/product-detail.component';
 
 export const routes: Routes = [
   { 
@@ -46,8 +47,13 @@ export const routes: Routes = [
     canActivate: [authEnableGuard]
   },
   { 
-    path: 'app/validate-prescription', 
+    path: 'app/validate-prescription/:id', 
     component: ValidatePrescriptionPageComponent,
+    canActivate: [authEnableGuard]
+  },
+  { 
+    path: 'app/product-detail/:id', 
+    component: ProductDetailComponent,
     canActivate: [authEnableGuard]
   }
 ];

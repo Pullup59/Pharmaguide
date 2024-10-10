@@ -11,6 +11,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Product } from '../../model/product/product.model';
 import { PrescriptionProductData } from '../../model/prescription/prescription-product-data/prescription-product-data.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-validate-prescription-page',
@@ -29,24 +30,20 @@ export class ValidatePrescriptionPageComponent {
 
   prescriptionData: PrescriptionProductData | null = null;
 
-  paginator!: MatPaginator;
-
-  sort!: MatSort;
-
-  dataSource = new MatTableDataSource<Product, MatPaginator>();
-
   subscriptions: Subscription[] = [];
 
-  constructor(public prescriptionService : PrescriptionService) {}
+  constructor(private route: ActivatedRoute, public prescriptionService : PrescriptionService) {}
 
   ngOnInit(): void {
-    this.prescriptionService.getDetailsById(1).subscribe({
-      next: (data) => {
-        this.prescriptionData = data
-        this.dataSource.data = this.prescriptionData.products ?? [];
-      },
-      error: (err) => console.error('Error fetching prescription details', err)
-    })
-    console.log(this.prescriptionData);
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      var parseId: number = +id;
+      this.prescriptionService.getDetailsById(parseId).subscribe({
+        next: (data) => {
+          this.prescriptionData = data
+        },
+        error: (err) => console.error('Error fetching prescription details', err)
+      })
+    }
   }
 }

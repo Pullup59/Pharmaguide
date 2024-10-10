@@ -7,6 +7,7 @@ import { MatCommonModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-consult-page',
@@ -37,7 +38,7 @@ export class ConsultPageComponent implements OnInit, OnDestroy {
 
   sort!: MatSort;
 
-  constructor( public productService : ProductService) {}
+  constructor(public router: Router, public productService : ProductService) {}
 
   ngOnInit(): void {
     this.subscriptions.push(
@@ -73,5 +74,9 @@ export class ConsultPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(s => s.unsubscribe());
+  }
+
+  productDetail(id: number) {
+    this.router.navigate([`${'/app/product-detail'}/${id}`]);
   }
 }

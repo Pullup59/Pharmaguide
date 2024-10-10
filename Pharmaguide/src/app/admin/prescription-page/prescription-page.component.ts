@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, Inject, OnDestroy, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Prescription } from '../../model/prescription/prescription.model';
 import { PrescriptionService } from '../../service/prescription-service/prescription.service';
 import { Subscription } from 'rxjs';
@@ -7,7 +7,8 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DOCUMENT } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-prescription-page',
@@ -41,7 +42,7 @@ export class PrescriptionPageComponent implements OnDestroy {
 
   innerHeight!: number;
 
-  constructor(public prescriptionService : PrescriptionService) {}
+  constructor(public router: Router, public prescriptionService : PrescriptionService) {}
 
   ngOnInit(): void {
       this.subscriptions.push(
@@ -77,6 +78,10 @@ export class PrescriptionPageComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(s => s.unsubscribe);
+  }
+
+  prescriptionDetail(prescriptionId: number) {
+    this.router.navigate([`${'/app/validate-prescription'}/${prescriptionId}`]);
   }
 
   track() {

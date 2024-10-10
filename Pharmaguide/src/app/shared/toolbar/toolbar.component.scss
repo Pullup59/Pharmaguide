@@ -37,7 +37,6 @@ app-toolbar {
         }
             
         .route-button {
-            display: flex;
             align-items: flex-start;
             flex-direction: column;
             margin-top: 10%;
@@ -221,5 +220,5 @@ app-toolbar {
         display: flex;
         flex-direction: row;
 
-}
+    }
 }
