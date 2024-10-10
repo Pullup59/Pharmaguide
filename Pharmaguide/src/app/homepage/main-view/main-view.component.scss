@@ -5,7 +5,7 @@ app-main-view {
     .container {
         display: flex-start;
         flex-direction: column;
-        min-height: 1024px ;
+        min-height: 1024px;
         margin-top: 4%;
         margin-right: 8%;
         margin-left: 8%;
@@ -38,7 +38,7 @@ app-main-view {
                 }
 
                 .text2 {
-                    max-width: 190px;
+                    max-width: 240px;
                 }
 
                 .text1 {
@@ -119,11 +119,10 @@ app-main-view {
     }
 
     .text2 {
-        -webkit-text-stroke: 0.7px;
-        -webkit-text-stroke-color: black;
+        font-weight: bold;
         text-align:center;
         vertical-align:text-top;
-        font-size:16px;
+        font-size:20px;
     }
 
     .text1 {

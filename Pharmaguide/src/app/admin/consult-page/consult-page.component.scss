@@ -5,32 +5,19 @@ app-consult-page {
         display: flex;
         justify-content: center;
         flex-direction: row;
-        min-height: 662px;
+        min-height: 717px;
 
         .product-table {
             width: 80%;
-          }
-          
-          .mat-column-demo-position {
-            border-right: 1px solid currentColor;
-            padding-right: 24px;
-            text-align: center;
-            width: 32px;
-          }
-          
-          .mat-column-demo-name {
-            padding-left: 16px;
-            font-size: 20px;
-          }
-          
-          .mat-column-demo-weight {
-            font-style: italic;
-          }
-          
-          .mat-column-demo-symbol {
-            width: 32px;
-            text-align: center;
-            font-weight: bold;
-          }          
+        }
+        
+        .mat-mdc-paginator-page-size-label,
+        .mat-mdc-paginator-page-size-value {
+            display: none !important;
+        }
+
+        .mat-mdc-paginator-container {
+            min-width: 100%;
+        }
     }
 }
