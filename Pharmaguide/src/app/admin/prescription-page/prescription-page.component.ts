@@ -1,4 +1,4 @@
-import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { Prescription } from '../../model/prescription/prescription.model';
 import { PrescriptionService } from '../../service/prescription-service/prescription.service';
 import { Subscription } from 'rxjs';
@@ -7,12 +7,14 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-prescription-page',
   standalone: true,
   imports: [
     MatCommonModule,
+    CommonModule,
     MatTableModule,
     MatButtonModule,
     MatPaginatorModule
@@ -37,9 +39,17 @@ export class PrescriptionPageComponent implements OnDestroy {
 
   subscriptions: Subscription[] = [];
 
+  innerHeight!: number;
+
+  @HostListener('window:resize', ['$event'])
+    onResize(event: any) {
+      this.updateHeight();
+    }
+
   constructor(public prescriptionService : PrescriptionService) {}
 
   ngOnInit(): void {
+    this.updateHeight();
       this.subscriptions.push(
         this.prescriptionService.getAll().subscribe({
           next: (products) =>{
@@ -50,6 +60,10 @@ export class PrescriptionPageComponent implements OnDestroy {
           complete: () => this.isLoading = true
         })
       );
+  }
+
+  updateHeight() {
+    this.innerHeight = window.innerHeight;
   }
 
   ngOnDestroy(): void {

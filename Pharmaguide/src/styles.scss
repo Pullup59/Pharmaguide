@@ -2,12 +2,13 @@
     font-family: sans-serif !important; 
 }
 
-html, body { 
-    height: 100%;
+html { 
+    min-height: 100%;
 }
 
 body { 
     margin: 0;
+    overflow: auto;
 }
 
 // main colors
