@@ -14,5 +14,5 @@ export class Prescription {
     
     prescriptionProducts?: PrescriptionProduct[] = [];
 
-    products?: Product[] = [];
+    
 }

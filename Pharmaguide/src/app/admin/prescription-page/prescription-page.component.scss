@@ -7,21 +7,112 @@ app-prescription-page {
         display: flex;
         justify-content: center;
         flex-direction: row;
-        min-height: 717px;
+        min-height: calc(100vh - 200px);
 
-        .selector {
-            flex-direction: row;
-            display: flex;
-            margin-top: 45px;
-            margin-left: 10%;
+        .product-table {
+            margin-bottom: 4vh;
 
-            .text1 {
-                margin-top: 17px;
-                margin-right: 10px;
-                color: $bluenavy;
-                font-size:20px;
-                font-weight: 700;
-            }
+            .mat-header-cell {
+                color: red;
+              }
+              
+              .mat-cell {
+                color: blue;
+              }
         }
+    }
+
+    .mat-mdc-paginator-page-size-label,
+        .mat-mdc-paginator-page-size-value {
+            display: none !important;
+        }
+
+        .mat-mdc-paginator-container {
+            min-width: 95%;
+            background-color: #f6f4f4;
+            border-radius: 0px 0px 15px 15px;
+        }
+
+        .mat-mdc-paginator-outer-container {
+            background-color: $tan;
+        }
+
+    table[mat-table] {
+        width: 100%;
+        background-color: #f6f4f4;
+        padding: 15px;
+        border-radius: 15px 15px 0px 0px;
+    }
+
+    .mdc-data-table__content {
+        background-color: #f6f4f4;
+    }
+
+    td[mat-cell] {
+        font-size: 12pt;
+    }
+    
+    tr[mat-header-row] {
+        background: #f6f4f4;
+    }
+    
+    tr[mat-row] {
+        background-color: #f6f4f4;
+        padding: 100px;
+    }
+
+    tr[mat-row] span {
+        position: relative;
+    }
+
+    .text {
+        font-size: 14pt;
+        position: relative;
+        color: black !important;
+        z-index: 15 !important;
+    }
+
+    tr[mat-row] td {
+        height: 100%;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: none;
+        position: relative;
+        z-index: 1;
+    }
+
+    tr[mat-row] td::before {
+        
+        background-color: white;
+        content: '';
+        width: 100%;
+        height: calc(100% - 0.5rem);
+        color: black;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        border-bottom: 1px solid lightgray;
+        border-top: 1px solid lightgray;
+    }
+
+    tr[mat-row] td:first-child:before {
+        border-left: 1px solid lightgray;
+        border-top-left-radius: 1px solid lightgray;
+        border-top-left-radius: 7px;
+        border-bottom-left-radius: 7px;
+    }
+
+    tr[mat-row] td:last-child:before {
+        border-right: 1px solid lightgray;
+        border-top-right-radius: 1px solid lightgray;
+        border-top-right-radius: 7px;
+        border-bottom-right-radius: 7px;
+    }
+
+    tr[mat-row]:hover td::before {
+        border-color: gray;
     }
 }

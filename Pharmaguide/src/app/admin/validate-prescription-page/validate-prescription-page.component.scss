@@ -6,7 +6,7 @@ app-validate-prescription-page {
         display: flex;
         justify-content: flex-start;
         flex-direction: row;
-        min-height: 662px;
+        min-height: calc(100vh - 200px);
 
         .products{
             display: flex;
@@ -40,10 +40,6 @@ app-validate-prescription-page {
                 background-color: #8bd59e;
                 border-bottom-left-radius: 4px;
                 border-bottom-right-radius: 4px;
-
-                .advice{
-
-                }
             }
 
         }

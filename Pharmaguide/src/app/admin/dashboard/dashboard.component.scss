@@ -2,7 +2,7 @@ app-dashboard {
     height: 100%;
 
     .container {
-        min-height: 717px;
+        min-height: calc(100vh - 200px);
     }
 }
  

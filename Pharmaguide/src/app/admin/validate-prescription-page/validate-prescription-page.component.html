@@ -1,7 +1,7 @@
 <div class="container">
-    <ng-container *ngIf="prescription && prescription.products && prescription.products.length > 0">
+    <ng-container *ngIf="prescriptionData && prescriptionData?.products && prescriptionData.products?.length != undefined">
       <div class="products">
-        <ng-container *ngFor="let product of prescription.products">
+        <ng-container *ngFor="let product of prescriptionData.products">
           <div class="product">
             <span class="product-dci"> {{ product.dci }}</span>
             <span class="product-name">({{ product.name | uppercase }})</span>
@@ -20,7 +20,7 @@
       </div>
     </ng-container>
 
-    <ng-container *ngIf="prescription && (!prescription.products || prescription.products.length === 0)">
+    <ng-container *ngIf="prescriptionData && (!prescriptionData.products || prescriptionData.products.length === 0)">
       <p>Aucun produit trouvé pour cette prescription.</p>
     </ng-container>
   </div>

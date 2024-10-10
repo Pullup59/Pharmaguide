@@ -47,6 +47,7 @@ export const routes: Routes = [
   },
   { 
     path: 'app/validate-prescription', 
-    component: ValidatePrescriptionPageComponent
+    component: ValidatePrescriptionPageComponent,
+    canActivate: [authEnableGuard]
   }
 ];
