@@ -145,16 +145,16 @@ app-toolbar {
     }
 
     .logged-footer {
-        display: flex;
         background-color: $green;
         width: 100%;
+        display: flex;
+        flex-direction: column;
+        border-top-right-radius: 25px;
+        padding: 18px 36px;
+        color: white;
 
-        footer {
-            display: flex;
-            flex-direction: column;
-            border-top-right-radius: 25px;
-            padding: 18px 36px;
-            color: white;
+
+            
 
             .footer-header {
                 display: flex;
@@ -204,7 +204,7 @@ app-toolbar {
                     }
                 }
             }
-        }
+        
     }
 
     .icon-container {
