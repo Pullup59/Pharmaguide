@@ -1,0 +1,16 @@
+<div class="container">
+    <ng-container *ngIf="prescription && prescription.products && prescription.products.length > 0">
+      <ng-container *ngFor="let product of prescription.products">
+        <div>
+          <h4>{{ product.name }}</h4>
+          <p>DCI: {{ product.dci }}</p>
+          <p>CIP: {{ product.cip }}</p>
+        </div>
+      </ng-container>
+    </ng-container>
+    <!-- Message d'erreur si aucun produit n'est trouvé -->
+    <ng-container *ngIf="prescription && (!prescription.products || prescription.products.length === 0)">
+      <p>Aucun produit trouvé pour cette prescription.</p>
+    </ng-container>
+  </div>
+  

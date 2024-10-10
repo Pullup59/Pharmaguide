@@ -1,0 +1,26 @@
+@import '../../../styles';
+
+app-prescription-page {
+
+    .container {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        min-height: 662px;
+
+        .selector {
+            flex-direction: row;
+            display: flex;
+            margin-top: 45px;
+            margin-left: 10%;
+
+            .text1 {
+                margin-top: 17px;
+                margin-right: 10px;
+                color: $bluenavy;
+                font-size:20px;
+                font-weight: 700;
+            }
+        }
+    }
+}

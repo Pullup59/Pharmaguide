@@ -1,5 +1,6 @@
 import { PrescriptionProduct } from "../prescriptionProduct/prescription-product.model";
 import { ProductAdvice } from "../productAdvice/product-advice.model";
+import { Advice } from "../advice/advice.model";
 
 export class Product {
 
@@ -15,7 +16,9 @@ export class Product {
 
     flagIsDelete?: boolean;
 
-    productAdvices: ProductAdvice[] = [];
+    productAdvices?: ProductAdvice[] = [];
     
-    prescriptionProducts: PrescriptionProduct[] = [];
+    prescriptionProducts?: PrescriptionProduct[] = [];
+
+    advices?: Advice[] = [];
 }

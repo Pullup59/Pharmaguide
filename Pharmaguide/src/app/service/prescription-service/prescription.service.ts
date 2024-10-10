@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { Prescription } from '../../model/prescription/prescription.model';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, Observable, throwError, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -23,6 +23,13 @@ export class PrescriptionService {
 
   getAll() : Observable<Prescription[]> {
     return this.http.get<Prescription[]>(this.url)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  getDetailsById(id: number) : Observable<Prescription> {
+    return this.http.get<Prescription>(`${this.url}/${id}/details`)
       .pipe(
         catchError(this.handleError)
       );
