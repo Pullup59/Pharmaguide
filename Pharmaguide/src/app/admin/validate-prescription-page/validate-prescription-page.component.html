@@ -1,14 +1,25 @@
 <div class="container">
     <ng-container *ngIf="prescription && prescription.products && prescription.products.length > 0">
-      <ng-container *ngFor="let product of prescription.products">
-        <div>
-          <h4>{{ product.name }}</h4>
-          <p>DCI: {{ product.dci }}</p>
-          <p>CIP: {{ product.cip }}</p>
-        </div>
-      </ng-container>
+      <div class="products">
+        <ng-container *ngFor="let product of prescription.products">
+          <div class="product">
+            <span class="product-dci"> {{ product.dci }}</span>
+            <span class="product-name">({{ product.name | uppercase }})</span>
+            <span></span>
+            <span class="product-cip">CIP: {{ product.cip }}</span>
+          </div>
+          <div class="advices">
+            <ng-container *ngFor="let advice of product.advices">
+              <div class="advice">
+                <div>- {{ advice.content }}</div>
+              </div>
+            </ng-container>
+
+          </div>
+        </ng-container>
+      </div>
     </ng-container>
-    <!-- Message d'erreur si aucun produit n'est trouvé -->
+
     <ng-container *ngIf="prescription && (!prescription.products || prescription.products.length === 0)">
       <p>Aucun produit trouvé pour cette prescription.</p>
     </ng-container>

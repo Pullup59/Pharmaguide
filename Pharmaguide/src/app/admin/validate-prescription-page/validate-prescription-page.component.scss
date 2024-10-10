@@ -1,6 +1,6 @@
 @import '../../../styles';
 
-app-prescription-page {
+app-validate-prescription-page {
 
     .container {
         display: flex;
@@ -8,19 +8,45 @@ app-prescription-page {
         flex-direction: row;
         min-height: 662px;
 
-        .selector {
-            flex-direction: row;
+        .products{
             display: flex;
-            margin-top: 45px;
-            margin-left: 10%;
+            flex-direction: column;
+            padding: 32px;
 
-            .text1 {
-                margin-top: 17px;
-                margin-right: 10px;
-                color: $bluenavy;
-                font-size:20px;
-                font-weight: 700;
+            .product{
+                display: flex;
+                flex-direction: row;
+                align-items: baseline;
+                background-color: $green;
+                color: white;
+                padding: 4px 8px;
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+
+
+                .product-name{
+                    padding: 0 2px;
+                }
+
+                .product-cip{
+                    padding: 0 2px;
+                    font-size: 0.7em;
+                }
             }
+
+            .advices {
+                padding-left: 18px;
+                margin-bottom: 8px;
+                background-color: #8bd59e;
+                border-bottom-left-radius: 4px;
+                border-bottom-right-radius: 4px;
+
+                .advice{
+
+                }
+            }
+
         }
+      
     }
 }

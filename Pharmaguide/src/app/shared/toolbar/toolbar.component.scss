@@ -147,11 +147,11 @@ app-toolbar {
     .logged-footer {
         display: flex;
         background-color: $green;
+        width: 100%;
 
         footer {
             display: flex;
             flex-direction: column;
-            background-color: #1B9476;
             border-top-right-radius: 25px;
             padding: 18px 36px;
             color: white;
@@ -167,6 +167,7 @@ app-toolbar {
                     height: 32px;
                     padding-left: 6px;
                     padding-right: 22px;
+                    filter: invert(80%) sepia(100%) saturate(200%);
                 }
             }
 
