@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, viewChild, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ProductService } from '../../service/product-service/product.service';
 import { Subscription } from 'rxjs';
 import { Product } from '../../model/product/product.model';
@@ -8,6 +8,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
+import {
+  MatDialog,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+} from '@angular/material/dialog';
+import { ProductEditionDialogComponent } from './product-edition-dialog/product-edition-dialog/product-edition-dialog.component';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-consult-page',
@@ -16,7 +24,11 @@ import { Router } from '@angular/router';
     MatCommonModule,
     MatTableModule,
     MatButtonModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogContent,
+    MatInputModule
   ],
   templateUrl: './consult-page.component.html',
   styleUrl: './consult-page.component.scss',
@@ -24,23 +36,43 @@ import { Router } from '@angular/router';
 })
 export class ConsultPageComponent implements OnInit, OnDestroy {
 
-  isLoading: boolean = false;
-
-  fetchedProducts: Product[] = [];
-
-  dataSource = new MatTableDataSource<Product, MatPaginator>();
-
-  displayedColumns: string[] = ['name', 'dci', 'dosage'];
-  
-  subscriptions: Subscription[] = [];
-
-  paginator!: MatPaginator;
+  readonly dialog = inject(MatDialog);
 
   sort!: MatSort;
+
+  paginator!: MatPaginator;
+  
+  isLoading: boolean = false;
+  
+  fetchedProducts: Product[] = [];
+  
+  subscriptions: Subscription[] = [];
+  
+  displayedColumns: string[] = ['name', 'dci', 'dosage'];
+  
+  dataSource = new MatTableDataSource<Product, MatPaginator>();
+
+  @ViewChild(MatSort) set matSort(ms: MatSort) {
+    this.sort = ms;
+    this.setDataSourceAttributes();
+  }
+
+  @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
+      this.paginator = mp;
+      this.setDataSourceAttributes();
+  }
 
   constructor(public router: Router, public productService : ProductService) {}
 
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(s => s.unsubscribe());
+  }
+
+  loadData(): void {
     this.subscriptions.push(
       this.productService.getAllProducts().subscribe({
         next: (products) =>{
@@ -53,30 +85,27 @@ export class ConsultPageComponent implements OnInit, OnDestroy {
     );
   }
 
-  @ViewChild(MatSort) set matSort(ms: MatSort) {
-      this.sort = ms;
-      this.setDataSourceAttributes();
-  }
-
-  @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
-      this.paginator = mp;
-      this.setDataSourceAttributes();
-  }
-
   setDataSourceAttributes() {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-
-      // if (this.paginator && this.sort) {
-      //     this.applyFilter('');
-      // }
   }
 
-  ngOnDestroy(): void {
-    this.subscriptions.forEach(s => s.unsubscribe());
-  }
-
+  
   productDetail(id: number) {
     this.router.navigate([`${'/app/product-detail'}/${id}`]);
+  }
+
+  openEditDialog(event: any = undefined, isEditMode: boolean) {
+     const dialogRef = this.dialog.open(ProductEditionDialogComponent, {
+      restoreFocus: false,
+      width: '70vh',
+      height: '70vh',
+      data: {
+        modeFlag: isEditMode,
+        dataKey: event
+      }
+    });
+    dialogRef.afterClosed().subscribe(res => this.loadData());
+    // #enddocregion focus-restoration
   }
 }

@@ -108,4 +108,18 @@ app-consult-page {
     tr[mat-row]:hover td::before {
         border-color: gray;
     }
+
+    .add {
+        min-width: 140px;
+        min-height: 65px;
+        margin-top: 4vh;
+        margin-left: 4vh;
+        border: rgb(122, 122, 122) solid 1px !important;
+
+        .button-font {
+            color: rgb(52, 52, 52);
+            font-size:24px;
+        }
+    }
 }
+

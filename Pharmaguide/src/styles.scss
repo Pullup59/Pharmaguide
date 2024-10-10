@@ -1,3 +1,13 @@
+@use '@angular/material' as mat;
+
+$theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  )
+));
+
 * {
     font-family: Roboto, Arial, sans-serif;
 }
@@ -9,6 +19,8 @@ html {
 body { 
     margin: 0;
     overflow: auto;
+
+    @include mat.all-component-themes($theme);
 }
 
 // main colors
@@ -17,3 +29,9 @@ $green: #105644;
 $smoothgreen: #8BD59E;
 $lightgreen: #C7DBC2;
 $tan: #F4EBD6;
+
+.mat-dialog-container {
+    border-radius: 10% !important;
+    border-color: gray !important;
+    border: 1px !important;
+}

@@ -1,0 +1,70 @@
+@import '../../../../../styles';
+
+.mat-mdc-dialog-surface {
+    border-radius: 0px 0px 30px 30px !important;
+    border: 1px solid $bluenavy;
+    background-color: #FAF9F6;
+}
+
+app-product-edition-dialog {
+    min-height: calc(60vh);
+    min-height: calc(30vh);
+
+    .header {
+        display: block !important;
+        height: 45px;
+        background-color: $bluenavy;
+    }
+
+    .content {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        padding: 30px;
+
+        .title {
+            font-weight: 500;
+            font-size: 30px;
+            padding: 30px;
+        }
+
+        .field-container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            padding: 30px;
+
+            .form-field {
+                display: flex;
+                justify-content: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            .close {
+                min-width: 110px;
+                min-height: 45px;
+        
+                .button-font {
+                    font-size:20px;
+                }
+            }
+
+            .confirm {
+                min-width: 110px;
+                min-height: 45px;
+                background-color: $bluenavy;
+        
+                .button-font {
+                    color:#FAF9F6;
+                    font-size:20px;
+                }
+            }
+        }
+    }
+}

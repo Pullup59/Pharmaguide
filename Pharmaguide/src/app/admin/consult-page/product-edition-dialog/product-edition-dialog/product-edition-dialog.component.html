@@ -1,0 +1,46 @@
+<div class="header">
+</div>
+<div class="content">
+    @if (!editMode) {
+        <div class="title">Création d'un produit</div>
+    }
+    @else {
+        <div class="title">Edition du produit :  {{ productObject.name }}</div>
+    }
+    <div class="field-container">
+        <form [formGroup]="form" class="form-field">
+            <mat-form-field>
+                <mat-label>Nom du produit</mat-label>
+                <input matInput formControlName="Name">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Molécule</mat-label>
+                <input matInput formControlName="Dci">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>CIP</mat-label>
+                <input matInput formControlName="Cip">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Dosage</mat-label>
+                <input matInput formControlName="Dosage">
+            </mat-form-field>
+        </form>
+    </div>
+    <div class="button-container">
+        <a 
+            mat-raised-button 
+            type="button" 
+            class="close" 
+            (click)="closeDialog()">
+            <div class="button-font">Annuler</div>
+        </a>
+        <a 
+            mat-raised-button 
+            type="button" 
+            class="confirm" 
+            (click)="confirm()">
+            <div class="button-font">Confirmer</div>
+        </a>
+    </div>
+</div>
