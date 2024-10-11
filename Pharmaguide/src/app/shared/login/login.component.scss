@@ -1,23 +1,22 @@
 @import '../../../styles';
 
-app-main-view {
+app-login {
 
     .container {
-        display: flex-start;
-        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
         min-height: calc(100vh - 200px);
-        margin-top: 4%;
-        margin-right: 8%;
-        margin-left: 8%;
-        margin-bottom: 4%;
         
-        .top-container {
-            flex: 1 1 auto;
-            display: flex;
-            max-height: 500px;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 5%;
+        .dashboard {
+            min-width: 140px;
+            min-height: 55px;
+
+            .login-font {
+                font-size:20px;
+            }
         }
     }
 }
+ 

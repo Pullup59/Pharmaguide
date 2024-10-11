@@ -1,7 +1,8 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterOutlet, RouterModule } from '@angular/router';
 import { MainSharedService } from '../service/main-shared.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +10,12 @@ import { MainSharedService } from '../service/main-shared.service';
   imports: [
     MatButtonModule,
     RouterOutlet, 
-    RouterModule 
+    RouterModule,
+    CommonModule
   ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
 
